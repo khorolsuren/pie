@@ -6,12 +6,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <canvas id="myChart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+   <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'polarArea',
+    indexLabel: "#percent%",
+    indexLabelPlacement: "inside",
+    // The data for our dataset
+    data: {
+        labels: ['Search', 'Referral', 'Campaign', 'Social-Media', 'Direct'],
+        datasets: [{
+            label: 'Visitors',
+            backgroundColor: ['#70db70', '#dd99ff', '#ff6666',  '#66c2ff', '#ffd633'],
+            boderAlign: 'center',
+            borderColor: '#fff',
+            borderWidth: 1,
+            data: [8, 15, 6, 19, 5]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+      cutoutPercentage: 70,
+      animation: {
+        animateScale: true
+        }
+
+    }
+});
+   </script>>
   </body>
 </html>
